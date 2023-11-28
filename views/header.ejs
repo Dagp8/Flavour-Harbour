@@ -1,0 +1,21 @@
+<header>
+  <div class="header-content">
+    <a href="/" class="logo">
+      <img src="/image/flavour.jpg" alt="flavour logo" />
+    </a>
+    <h1>Welcome to <%= pageTitle %> Explore Tasty Recipes</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="login">Login</a></li>
+      <li><a href="register">Register</a></li>
+      <li><a href="recipes">Recipes</a></li>
+      <li><a href="about">About Us</a></li>
+    </ul>
+  </nav>
+
+  <form action="/search-result" method="GET" class="search-form">
+    <input id="search-box" type="text" name="keyword" />
+    <input type="submit" value="Search" />
+  </form>
+</header>
