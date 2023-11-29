@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%=pageTitle%></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <script
+      src="https://kit.fontawesome.com/8868674f05.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include('header') %>
+
+    <form action="/login" method="POST">
+      <h2>Login</h2>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>

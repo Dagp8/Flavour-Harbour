@@ -1,0 +1,107 @@
+header {
+  background-color: #ffd2c4ba;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  flex-shrink: 0;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.logo img {
+  max-height: 100px;
+}
+
+h1 {
+  margin: 0;
+  flex-grow: 1;
+}
+nav {
+  background-color: #ffd2c4ba;
+  color: black;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #757373;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #d900ff;
+}
+
+.search-form {
+  margin-top: 10px;
+  margin-left: 120px;
+  text-align: right;
+}
+
+#search-box {
+  background-color: antiquewhite;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#search-btn {
+  background-color: #4caf50; /* Color de fondo del botón (puedes ajustarlo) */
+  color: white; /* Color del texto del botón */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: #45a049; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+
+/* footer */
+
+footer {
+  background-color: #ffd2c4ba;
+  margin-top: 30px;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content i {
+  font-size: 40px;
+  margin: 0 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer-content i:hover {
+  transform: scale(1.1);
+}

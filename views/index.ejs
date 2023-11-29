@@ -3,9 +3,53 @@
   <head>
     <title><%=pageTitle%></title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
-    <link rel="stylesheet" type="text/css" href="/header.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <script
+      src="https://kit.fontawesome.com/8868674f05.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <%- include('header') %>
+
+    <div class="gallery-container">
+      <figure class="gallery__item">
+        <img src="/image/Paella.jpg" alt="Paella" class="gallery__img" />
+        <figcaption>
+          <h2>Paella</h2>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="/image/lasagna.jpg" alt="lasagna" class="gallery__img" />
+        <figcaption>
+          <h2>Classic lasagna</h2>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="/image/Roast beef.jpg" alt="roast" class="gallery__img" />
+        <figcaption>
+          <h2>Roast Beef</h2>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="/image/carbonara.jpg" alt="carbonara" class="gallery__img" />
+        <figcaption>
+          <h2>Pasta Carbonara</h2>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="/image/turkey.jpg" alt="turkey" class="gallery__img" />
+        <figcaption>
+          <h2>Christmas Turkey</h2>
+        </figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="/image/burger-vegan.jpg" alt="vegan" class="gallery__img" />
+        <figcaption>
+          <h2>Vegan Burger</h2>
+        </figcaption>
+      </figure>
+    </div>
   </body>
+  <%- include('footer') %>
 </html>
