@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%=pageTitle%></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <link rel="stylesheet" type="text/css" href="/dash.css" />
+  </head>
+  <body>
+    <%- include('header') %>
+    <nav>
+      <ul>
+        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="recipes">Recipes</a></li>
+        <li><a href="about">About Us</a></li>
+      </ul>
+      <p><a href="/logout" class="logout-button">Sign Out</a></p>
+    </nav>
+
+    <section>
+      <h2>Add a New Recipe</h2>
+      <form action="/recipeadded" method="post" class="recipe-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="ingredients">Ingredients:</label>
+        <textarea id="ingredients" name="ingredients" required></textarea>
+
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions" required></textarea>
+
+        <button type="submit">Add Recipe</button>
+      </form>
+    </section>
+  </body>
+</html>

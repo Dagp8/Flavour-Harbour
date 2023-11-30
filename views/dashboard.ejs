@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%=pageTitle%></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <link rel="stylesheet" type="text/css" href="/dash.css" />
+  </head>
+  <body>
+    <%- include('header') %>
+    <nav>
+      <ul>
+        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="addrecipe">Add Recipe</a></li>
+        <li><a href="recipes">Recipes</a></li>
+        <li><a href="about">About Us</a></li>
+      </ul>
+      <p><a href="/logout" class="logout-button">Sign Out</a></p>
+    </nav>
+    <div id="recipes-container">
+      <% recipes.forEach(recipe => { %>
+      <div class="recipe" id="recipe-<%= recipe.recipe_id %>">
+        <h2
+          class="recipe-title"
+          onclick="toggleRecipe('<%= recipe.recipe_id %>')"
+        >
+          <%= recipe.title %>
+        </h2>
+        <div class="recipe-content <%= recipe.expanded ? 'expanded' : 'collapsed' %>">
+            <p><strong>Description:</strong> <%= recipe.description %></p>
+            <p><strong>Ingredients:</strong> <%= recipe.ingredients %></p>
+            <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
+
+            <button onclick="deleteRecipe('<%= recipe.recipe_id %>')">Delete Recipe</button>
+
+          </div>
+          
+      <% }); %>
+    </div>
+    <script>
+      function toggleRecipe(recipeId) {
+        const recipeContent = document.querySelector(
+          `#recipe-${recipeId} .recipe-content`
+        );
+        recipeContent.style.display =
+          recipeContent.style.display === "none" ||
+          recipeContent.style.display === ""
+            ? "block"
+            : "none";
+      }
+
+      async function deleteRecipe(recipeId) {
+    // Envía una solicitud POST para eliminar la receta
+    const response = await fetch(`/deleterecipe/${recipeId}`, {
+      method: 'POST',
+    });
+
+    if (response.ok) {
+      // Recarga la página después de eliminar la receta
+      location.reload();
+    } else {
+      console.error('Error deleting recipe');
+    }
+  }
+    </script>
+  </body>
+</html>

@@ -12,3 +12,13 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     hashedPassword VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE recipes (
+    recipe_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    ingredients TEXT,
+    instructions TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);

@@ -12,16 +12,20 @@
   <body>
     <%- include('header') %>
 
-    <form action="/login" method="POST">
-      <h2>Login</h2>
+    <div class="form-container">
+      <form action="/loggedin" method="POST" class="custom-form">
+        <h2>Login</h2>
 
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
 
-      <button type="submit">Login</button>
-    </form>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="/register">Sign Up here</a>.</p>
+      </form>
+    </div>
   </body>
+  <%- include('footer') %>
 </html>
