@@ -32,7 +32,34 @@ module.exports = function (app, pageData) {
   });
 
   app.get("/recipes", function (req, res) {
-    res.render("recipes.ejs", pageData);
+    let sqlQuery =
+      "SELECT recipes.*, users.username FROM recipes JOIN users ON recipes.user_id = users.user_id";
+    db.query(sqlQuery, (err, recipes) => {
+      if (err) {
+        console.error("Error fetching recipes:", err);
+        return res.status(500).send("Error fetching recipes");
+      }
+      res.render("recipes.ejs", {
+        ...pageData,
+        recipes: recipes,
+      });
+    });
+  });
+
+  app.get("/recipes/:recipeId", function (req, res) {
+    const recipeId = req.params.recipeId;
+    let sqlQuery = "SELECT * FROM recipes WHERE recipe_id = ?";
+    db.query(sqlQuery, [recipeId], (err, recipe) => {
+      if (err) {
+        console.error("Error fetching recipe:", err);
+        return res.status(500).send("Error fetching recipe");
+      }
+      console.log("Recipe:", recipe); // Agrega este console.log
+      res.render("recipe-detail.ejs", {
+        ...pageData,
+        recipe: recipe[0], // used recipe[0] one recipe
+      });
+    });
   });
 
   app.get("/login", function (req, res) {
@@ -133,6 +160,25 @@ module.exports = function (app, pageData) {
       });
     });
   });
+  app.get("/dashboard", redirectLogin, function (req, res) {
+    const userId = req.session.userId;
+
+    let sqlQuery = "SELECT * FROM recipes WHERE user_id = ?";
+    db.query(sqlQuery, [userId], (err, recipes) => {
+      if (err) {
+        console.error("Error fetching recipes:", err);
+        return res.status(500).send("Error fetching recipes");
+      }
+      const recipesWithExpansion = recipes.map((recipe) => ({
+        ...recipe,
+        expanded: 1,
+      }));
+      res.render("dashboard.ejs", {
+        ...pageData,
+        recipes: recipesWithExpansion,
+      });
+    });
+  });
 
   app.get("/addrecipe", redirectLogin, function (req, res) {
     res.render("addrecipe.ejs", pageData);
@@ -182,6 +228,31 @@ module.exports = function (app, pageData) {
 
       console.log(`Recipe ${recipeId} deleted`);
       res.redirect("/dashboard");
+    });
+  });
+
+  app.get("/search", function (req, res) {
+    const keyword = req.query.keyword;
+    if (!keyword) {
+      // Handle the case where no keyword is provided
+      return res.status(400).send("Please provide a keyword for the search.");
+    }
+
+    let sqlQuery =
+      "SELECT recipes.*, users.username FROM recipes JOIN users ON recipes.user_id = users.user_id WHERE title LIKE ? OR description LIKE ?";
+    const searchQuery = `%${keyword}%`;
+
+    db.query(sqlQuery, [searchQuery, searchQuery], (err, recipes) => {
+      if (err) {
+        console.error("Error searching recipes:", err);
+        return res.status(500).send("Error searching recipes");
+      }
+
+      res.render("search-results.ejs", {
+        ...pageData,
+        keyword: keyword,
+        recipes: recipes,
+      });
     });
   });
 };

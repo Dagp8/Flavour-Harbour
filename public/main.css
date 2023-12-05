@@ -43,6 +43,11 @@ figcaption {
   color: #555;
 }
 
+.gallery__item a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* about */
 
 section {
@@ -115,7 +120,6 @@ p {
   background-color: #45a049;
 }
 
-/* Agrega un destello de color a los formularios */
 .custom-form::before {
   content: "";
   position: absolute;
@@ -137,4 +141,118 @@ p {
   100% {
     box-shadow: 0 0 20px #45a049;
   }
+}
+
+/* table recipe*/
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px; /* Increased padding for better spacing */
+  text-align: left;
+}
+
+th {
+  background-color: #4a3ce7;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td {
+  text-align: left;
+}
+
+td a {
+  text-decoration: none;
+  padding: 8px 12px; /* Adjusted padding for better button appearance */
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 4px;
+  display: inline-block; /* Ensures buttons are on the same line */
+  margin-right: 5px;
+}
+
+td a:hover {
+  background-color: #45a049;
+}
+
+/* recipe contaider search*/
+
+.recipe-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.recipe h2 {
+  margin-bottom: 10px;
+}
+
+.recipe p {
+  margin-bottom: 15px;
+}
+
+.view-recipe-link {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* recipe details  */
+
+.recipe-details-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-details {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.recipe-details h1 {
+  margin-bottom: 10px;
+}
+
+.recipe-details p {
+  margin-bottom: 15px;
+}
+
+.back-to-list-link {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
 }

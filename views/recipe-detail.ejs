@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <script
+      src="https://kit.fontawesome.com/8868674f05.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include('header') %> <%- include('nav') %>
+
+    <div class="recipe-details-container">
+      <div class="recipe-details">
+        <h1><%= recipe.title %></h1>
+        <p><%= recipe.description %></p>
+        <p>Ingredients: <%= recipe.ingredients %></p>
+        <p>Instructions: <%= recipe.instructions %></p>
+      </div>
+      <a href="/recipes" class="back-to-list-link">Back to Recipe List</a>
+    </div>
+
+    <%- include('footer') %>
+  </body>
+</html>

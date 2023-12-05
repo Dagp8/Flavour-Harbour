@@ -20,5 +20,8 @@ CREATE TABLE recipes (
     description TEXT,
     ingredients TEXT,
     instructions TEXT,
+    expanded TINYINT(1),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+

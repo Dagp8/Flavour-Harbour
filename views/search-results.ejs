@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <script
+      src="https://kit.fontawesome.com/8868674f05.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include('header') %> <%- include('nav') %>
+
+    <div class="recipe-container">
+      <h1>Search Results for <%= keyword %></h1>
+
+      <% if (recipes.length > 0) { %> <% recipes.forEach(function(recipe) { %>
+      <div class="recipe">
+        <h2><%= recipe.title %></h2>
+        <p><%= recipe.description %></p>
+        <a href="/recipes/<%= recipe.recipe_id %>" class="view-recipe-link"
+          >View Recipe</a
+        >
+      </div>
+      <% }); %> <% } else { %>
+      <p>No recipes found for '<%= keyword %>'.</p>
+      <% } %>
+    </div>
+
+    <%- include('footer') %>
+  </body>
+</html>

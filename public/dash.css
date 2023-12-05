@@ -45,7 +45,7 @@ section {
 }
 
 .recipe-form button:hover {
-  background-color: #45a049;
+  background-color: #b8fe89;
 }
 
 /* recipe */
@@ -58,8 +58,8 @@ section {
 }
 
 .recipe-title {
-  background-color: #69e96d;
-  color: white;
+  background-color: rgb(146, 243, 149);
+  color: rgb(30, 26, 26);
   padding: 15px;
   margin: 0;
   cursor: pointer;

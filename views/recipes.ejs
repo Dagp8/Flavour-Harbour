@@ -11,6 +11,26 @@
   </head>
   <body>
     <%- include('header') %> <%- include('nav') %>
+
+    <div>
+      <h1>Recipes</h1>
+      <table>
+        <tr>
+          <th>Recipe Name</th>
+          <th>Author</th>
+          <th>Actions</th>
+        </tr>
+        <% recipes.forEach(recipe => { %>
+        <tr>
+          <td><%= recipe.title %></td>
+          <td><%= recipe.username %></td>
+          <td>
+            <a href="/recipes/<%= recipe.recipe_id %>">View Recipe</a>
+          </td>
+        </tr>
+        <% }); %>
+      </table>
+    </div>
+    <%- include('footer') %>
   </body>
-  <%- include('footer') %>
 </html>
