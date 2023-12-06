@@ -23,5 +23,10 @@ CREATE TABLE recipes (
     expanded TINYINT(1),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+  
+  /* change ingredients see like a list */ 
+    UPDATE recipes
+    SET ingredients = REPLACE(REPLACE(REPLACE
+    (ingredients, '\r', ''), '\n', ''), '\t', '');
 
 

@@ -227,32 +227,77 @@ td a:hover {
 
 .recipe-details-container {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 50px auto;
   padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 8px;
+  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .recipe-details {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background-color: #fff;
+  text-align: left;
 }
 
-.recipe-details h1 {
-  margin-bottom: 10px;
-}
-
-.recipe-details p {
-  margin-bottom: 15px;
+h1 {
+  color: #333;
 }
 
 .back-to-list-link {
   display: block;
-  color: #007bff;
+  text-align: center;
+  margin-top: 20px;
   text-decoration: none;
-  font-weight: bold;
+  color: #007bff;
+}
+
+.back-to-list-link:hover {
+  text-decoration: underline;
+}
+
+/*  ramdom recipe */
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.recipe-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.recipe-content {
+  text-align: left;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 5px;
 }

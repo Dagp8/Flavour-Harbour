@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/header_footer.css" />
+    <script
+      src="https://kit.fontawesome.com/8868674f05.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include('header') %> <%- include('nav') %>
+    <div class="container">
+      <h1>Random Recipe</h1>
+      <div class="recipe-book">
+        <h2><%= recipe.title %></h2>
+        <img src="<%= recipe.image %>" alt="<%= recipe.title %>" />
+        <div class="recipe-content">
+          <p><strong>Ingredients:</strong></p>
+          <ul>
+            <% recipe.extendedIngredients.forEach(ingredient => { %>
+            <li><%= ingredient.original %></li>
+            <% }); %>
+          </ul>
+          <p><strong>Preparation:</strong></p>
+          <p><%- recipe.instructions %></p>
+        </div>
+      </div>
+    </div>
+
+    <%- include('footer') %>
+  </body>
+</html>

@@ -16,8 +16,14 @@
       <div class="recipe-details">
         <h1><%= recipe.title %></h1>
         <p><%= recipe.description %></p>
-        <p>Ingredients: <%= recipe.ingredients %></p>
-        <p>Instructions: <%= recipe.instructions %></p>
+        <p><strong>Ingredients:</strong></p>
+        <ul>
+          <% recipe.ingredients.split(',').forEach(ingredient => { %>
+          <li><%= ingredient.trim() %></li>
+          <% }); %>
+        </ul>
+
+        <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
       </div>
       <a href="/recipes" class="back-to-list-link">Back to Recipe List</a>
     </div>

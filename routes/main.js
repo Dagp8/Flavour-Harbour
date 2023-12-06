@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { check, validationResult } = require("express-validator");
+const request = require("request");
 
 module.exports = function (app, pageData) {
   const redirectLogin = (req, res, next) => {
@@ -54,10 +55,13 @@ module.exports = function (app, pageData) {
         console.error("Error fetching recipe:", err);
         return res.status(500).send("Error fetching recipe");
       }
-      console.log("Recipe:", recipe); // Agrega este console.log
+
+      console.log("Ingredients string:", recipe[0].ingredients);
+
+      console.log("Recipe:", recipe);
       res.render("recipe-detail.ejs", {
         ...pageData,
-        recipe: recipe[0], // used recipe[0] one recipe
+        recipe: recipe[0],
       });
     });
   });
@@ -195,13 +199,21 @@ module.exports = function (app, pageData) {
 
     const title = req.body.title;
     const description = req.body.description;
-    const ingredients = req.body.ingredients;
+    const ingredients = req.body.ingredients
+      .split("\n")
+      .map((ingredient) => ingredient.trim());
     const instructions = req.body.instructions;
 
     // Insert the new recipe into the database
     let sqlQuery =
       "INSERT INTO recipes (user_id, title, description, ingredients, instructions) VALUES (?, ?, ?, ?, ?)";
-    let recipeData = [userId, title, description, ingredients, instructions];
+    let recipeData = [
+      userId,
+      title,
+      description,
+      ingredients.join("\n"),
+      instructions,
+    ];
 
     db.query(sqlQuery, recipeData, (err, result) => {
       if (err) {
@@ -254,5 +266,28 @@ module.exports = function (app, pageData) {
         recipes: recipes,
       });
     });
+  });
+
+  // random recipe
+  app.get("/random-recipe", function (req, res) {
+    try {
+      //  API  Spoonacular
+      const apiKey = "ecaa77a00d834ac994b68b0e11f701f7";
+      const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`;
+
+      request(apiUrl, { json: true }, (error, response, body) => {
+        if (error) {
+          console.error("Error fetching random recipe:", error);
+          res.status(500).send("Internal server error");
+        } else {
+          const randomRecipe = body.recipes[0];
+
+          res.render("randomRecipe.ejs", { ...pageData, recipe: randomRecipe });
+        }
+      });
+    } catch (error) {
+      console.error("Error fetching random recipe:", error);
+      res.status(500).send("Internal server error");
+    }
   });
 };

@@ -28,7 +28,7 @@
         </h2>
         <div class="recipe-content <%= recipe.expanded ? 'expanded' : 'collapsed' %>">
             <p><strong>Description:</strong> <%= recipe.description %></p>
-            <p><strong>Ingredients:</strong> <%= recipe.ingredients %></p>
+            <p><strong>Ingredients:</strong> <%- recipe.ingredients %></p>
             <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
 
             <button onclick="deleteRecipe('<%= recipe.recipe_id %>')">Delete Recipe</button>
