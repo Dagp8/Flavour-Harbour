@@ -164,25 +164,6 @@ module.exports = function (app, pageData) {
       });
     });
   });
-  app.get("/dashboard", redirectLogin, function (req, res) {
-    const userId = req.session.userId;
-
-    let sqlQuery = "SELECT * FROM recipes WHERE user_id = ?";
-    db.query(sqlQuery, [userId], (err, recipes) => {
-      if (err) {
-        console.error("Error fetching recipes:", err);
-        return res.status(500).send("Error fetching recipes");
-      }
-      const recipesWithExpansion = recipes.map((recipe) => ({
-        ...recipe,
-        expanded: 1,
-      }));
-      res.render("dashboard.ejs", {
-        ...pageData,
-        recipes: recipesWithExpansion,
-      });
-    });
-  });
 
   app.get("/addrecipe", redirectLogin, function (req, res) {
     res.render("addrecipe.ejs", pageData);
