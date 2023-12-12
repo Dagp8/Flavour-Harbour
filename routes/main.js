@@ -97,7 +97,7 @@ module.exports = function (app, pageData) {
         } else if (passwordMatch) {
           // Passwords match
           req.session.userId = result[0].user_id; // Establece el userId en la sesión
-          res.redirect("/dashboard");
+          res.redirect("dashboard");
         } else {
           // Passwords do not match
           res.status(401).send("Incorrect password");
