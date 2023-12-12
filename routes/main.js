@@ -6,7 +6,7 @@ const request = require("request");
 module.exports = function (app, pageData) {
   const redirectLogin = (req, res, next) => {
     if (!req.session.userId) {
-      res.redirect("/login");
+      res.redirect("./login");
     } else {
       next();
     }
