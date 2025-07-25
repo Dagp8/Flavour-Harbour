@@ -56,9 +56,9 @@ module.exports = function (app, pageData) {
         return res.status(500).send("Error fetching recipe");
       }
 
-      console.log("Ingredients string:", recipe[0].ingredients);
+      // console.log("Ingredients string:", recipe[0].ingredients);
 
-      console.log("Recipe:", recipe);
+      // console.log("Recipe:", recipe);
       res.render("recipe-detail.ejs", {
         ...pageData,
         recipe: recipe[0],
@@ -219,7 +219,7 @@ module.exports = function (app, pageData) {
         return res.status(500).send("Error deleting recipe");
       }
 
-      console.log(`Recipe ${recipeId} deleted`);
+      // console.log(`Recipe ${recipeId} deleted`);
       res.redirect("/dashboard");
     });
   });
@@ -253,7 +253,7 @@ module.exports = function (app, pageData) {
   app.get("/random-recipe", function (req, res) {
     try {
       //  API  Spoonacular
-      const apiKey = "ecaa77a00d834ac994b68b0e11f701f7";
+      const apiKey = process.env.SPOONACULAR_API_KEY;
       const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`;
 
       request(apiUrl, { json: true }, (error, response, body) => {

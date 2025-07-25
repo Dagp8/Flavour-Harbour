@@ -6,6 +6,7 @@ const mysql = require("mysql");
 var session = require("express-session");
 var validator = require("express-validator");
 const expressSanitizer = require("express-sanitizer");
+require("dotenv").config();
 
 // Express app object
 const app = express();
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: "tastyrecipe",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { expires: 600000 },
@@ -25,11 +26,12 @@ app.use(
 
 //database connection
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "reciapp",
-  password: "asde",
-  database: "myFlavour",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
+
 // connect database
 db.connect((err) => {
   if (err) {
