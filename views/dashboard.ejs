@@ -50,13 +50,13 @@
       }
 
       async function deleteRecipe(recipeId) {
-    // Envía una solicitud POST para eliminar la receta
+    // Send a POST request to delete the recipe
     const response = await fetch(`/deleterecipe/${recipeId}`, {
       method: 'POST',
     });
 
     if (response.ok) {
-      // Recarga la página después de eliminar la receta
+     // Reload the page after deleting the recipe
       location.reload();
     } else {
       console.error('Error deleting recipe');
